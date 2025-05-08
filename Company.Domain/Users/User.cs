@@ -10,6 +10,12 @@ namespace Company.Domain.Users
 {
     public class User : IdentityUser<Guid> // استفاده از Guid به عنوان کلید
     {
+        private readonly UserManager<User> _userManager;
+
+        public User(UserManager<User> userManager)
+        {
+            _userManager = userManager;
+        }
         public string FullName { get; private set; }
         public bool IsActive { get; private set; } = true;
         public DateTime CreatedAt { get; private set; }
@@ -19,7 +25,7 @@ namespace Company.Domain.Users
         public ICollection<ConsultationRequest> ConsultationRequests { get; set; }
 
 
-        public User(string fullName, string email, string phoneNumber)
+        public User(string fullName, string email, string? phoneNumber)
         {
             Id = Guid.NewGuid();
             FullName = fullName;
@@ -29,6 +35,7 @@ namespace Company.Domain.Users
             CreatedAt = DateTime.UtcNow;
             IsActive = true;
         }
+
 
         public bool CanRequestConsultation() => IsActive;
 

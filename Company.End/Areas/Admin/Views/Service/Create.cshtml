@@ -1,0 +1,43 @@
+﻿@using Company.End.ViewModel.Services
+@model CreateServiceViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Basic form elements</h4>
+            <p class="card-description"> Basic form elements </p>
+            <form class="forms-sample" asp-area="Admin" asp-controller="Service" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Title</label>
+                    <input asp-for="Title" type="text" class="form-control" id="exampleInputName1" placeholder="Title">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Description</label>
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputEmail3" placeholder="Description">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile">File upload</label>
+                    <input asp-for="ImageFile" type="file" class="form-control file-upload-default" />
+                    <div class="input-group col-xs-12 mt-2">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-dark">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

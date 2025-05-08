@@ -6,4 +6,34 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Auth\profile.cshtml" />
+    <Content Remove="Views\Auth\reset-password.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Auth\profile.cshtml" />
+    <None Include="Views\Auth\reset-password.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Application\Company.Application.csproj" />
+    <ProjectReference Include="..\Company.Config\Company.Config.csproj" />
+    <ProjectReference Include="..\Company.Facade\Company.Facade.csproj" />
+    <ProjectReference Include="..\Company.Infrast\Company.Infrast.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
 </Project>

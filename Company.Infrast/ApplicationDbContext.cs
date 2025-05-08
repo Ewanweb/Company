@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Company.Domain.Consultations;
+using Company.Domain.MigrationServices;
 using Company.Domain.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace Company.Infrast
             : base(options) { }
 
         public DbSet<ConsultationRequest> ConsultationRequests { get; set; }
+        public DbSet<MigrationService> MigrationServices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

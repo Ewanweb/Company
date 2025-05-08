@@ -14,12 +14,14 @@ namespace Company.Domain.MigrationServices
         public string Description { get; private set; }
         public string Slug { get; private set; } // برای URL
         public bool IsVisible { get; private set; }
+        public string? ImageName { get; set; }
+
 
         public ICollection<ConsultationRequest> ConsultationRequests { get; private set; }
 
         protected MigrationService() { }
 
-        public MigrationService(string title, string description)
+        public MigrationService(string title, string description, string? imageName)
         {
             Id = Guid.NewGuid();
             Title = title;
@@ -28,8 +30,17 @@ namespace Company.Domain.MigrationServices
             IsVisible = true;
             CreatedAt = DateTime.Now;
             ConsultationRequests = new List<ConsultationRequest>();
+            ImageName = imageName;
         }
 
+        public void Edit(string title, string description, string? imageName)
+        {
+            Description = description;
+            Title = title;
+            ImageName = imageName;
+            Slug = GenerateSlug(title);
+
+        }
         public void Hide() => IsVisible = false;
         public void Show() => IsVisible = true;
 
